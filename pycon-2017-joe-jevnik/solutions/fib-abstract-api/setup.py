@@ -8,15 +8,16 @@ setup(
     license='GPL-2',
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
         'Natural Language :: English',
         'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: Implementation :: CPython',
     ],
     ext_modules=[
         Extension(
-            'fib.fib',
-            ['fib/fib.c'],
+            # the qualified name of the extension module to build
+            'fib',
+            # the files to compile into our module relative to ``setup.py``
+            ['fib.c'],
         ),
     ],
 )
