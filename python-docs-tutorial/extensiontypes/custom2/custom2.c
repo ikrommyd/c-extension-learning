@@ -42,7 +42,7 @@ static int
 Custom_init(CustomObject *self, PyObject *args, PyObject *kwds)
 {
     static char *kwlist[] = {"first", "last", "number", NULL};
-    PyObject *first = NULL, *last = NULL;
+    PyObject *first = NULL, *last = NULL, *tmp;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|OOi", kwlist,
                                      &first, &last,
@@ -50,10 +50,16 @@ Custom_init(CustomObject *self, PyObject *args, PyObject *kwds)
         return -1;
 
     if (first) {
-        Py_XSETREF(self->first, Py_NewRef(first));
+        tmp = self->first;
+        Py_INCREF(first);
+        self->first = first;
+        Py_XDECREF(tmp);
     }
     if (last) {
-        Py_XSETREF(self->last, Py_NewRef(last));
+        tmp = self->last;
+        Py_INCREF(last);
+        self->last = last;
+        Py_XDECREF(tmp);
     }
     return 0;
 }
