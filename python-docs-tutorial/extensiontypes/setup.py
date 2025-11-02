@@ -8,5 +8,6 @@ setup(
         Extension("custom", ["custom.c"]),
         Extension("custom2", ["custom2.c"]),
         Extension("custom3", ["custom3.c"]),
+        Extension("custom4", ["custom4.c"]),
     ]
 )
